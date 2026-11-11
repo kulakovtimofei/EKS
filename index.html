@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>EUROKICK — Euro Kick Scooter</title>
+<meta name="description" content="Катайся на самокате по городам Европы: трамплины, трюки, монеты и ларёк со шмотками.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Russo+One&family=Rubik:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<canvas id="c"></canvas>
+
+<div id="hud">
+  <div id="coins"><div class="coin-ico"></div><span id="coinCount">0</span></div>
+  <div id="cityName">Прага<small id="shopDist"></small></div>
+</div>
+<div id="trick"></div>
+<div id="banner"></div>
+<div id="prompt">Нажми <kbd>E</kbd>, чтобы открыть магазин</div>
+
+<div id="touch">
+  <div class="tb" id="tLeft" data-k="left">◀</div>
+  <div class="tb" id="tRight" data-k="right">▶</div>
+  <div class="tb" id="tGas" data-k="up">▲</div>
+  <div class="tb" id="tBrake" data-k="down">▼</div>
+  <div class="tb" id="tJump" data-k="jump">ПРЫЖОК</div>
+  <div class="tb" id="tWhip" data-k="whip">WHIP</div>
+  <div class="tb" id="tShop">Магазин</div>
+</div>
+<div id="hint"><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> ехать · <kbd>Пробел</kbd> прыжок · в воздухе <kbd>A</kbd>/<kbd>D</kbd> вращение, <kbd>Shift</kbd> tailwhip</div>
+<div id="speed"></div>
+
+<div id="title" class="overlay">
+  <div class="panel">
+    <h1>EUROKICK</h1>
+    <div class="tag">самокат, старые улицы и монеты под ногами</div>
+    <p>Катайся по городам Европы, собирай монеты и прыгай с трамплинов. В воздухе крутись на 360° и делай tailwhip: чистое приземление даёт бонус.</p>
+    <p>В центре каждого города стоит ларёк: там очки, кепки, неоновые колёса, апгрейды и билеты в другие города.</p>
+    <p style="color:var(--muted);font-size:13px"><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> или стрелки, <kbd>Пробел</kbd> прыжок, <kbd>Shift</kbd> tailwhip, <kbd>E</kbd> магазин.</p>
+    <button class="btn" id="startBtn">Поехали</button>
+  </div>
+</div>
+
+<div id="shop" class="overlay hidden">
+  <div class="panel">
+    <div class="shop-head">
+      <h2>Ларёк</h2>
+      <div class="wallet"><div class="coin-ico"></div><span id="shopCoins">0</span></div>
+    </div>
+    <div class="tabs">
+      <button class="tab on" data-tab="look">Шмотки</button>
+      <button class="tab" data-tab="up">Апгрейды</button>
+      <button class="tab" data-tab="city">Билеты</button>
+    </div>
+    <div class="items" id="items"></div>
+    <div class="shop-foot"><span>Покупки сохраняются в этом браузере.</span><button class="btn ghost" id="closeShop">Вернуться на улицу</button></div>
+  </div>
+</div>
+<script type="module" src="./src/main.ts"></script>
+</body>
+</html>
