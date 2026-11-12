@@ -124,6 +124,10 @@ func _environment() -> void:
 	sun.shadow_blur = 1.5
 	sun.shadow_enabled = true
 	sun.directional_shadow_max_distance = 80.0
+	if OS.has_feature("web"):
+		# В браузере тень — второй проход по всей сцене: только ближняя зона, один каскад
+		sun.directional_shadow_mode = DirectionalLight3D.SHADOW_ORTHOGONAL
+		sun.directional_shadow_max_distance = 30.0
 	add_child(sun)
 
 	# Этна: пологий конус со снежной шапкой и дымом

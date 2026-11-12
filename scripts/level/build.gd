@@ -117,6 +117,8 @@ static func lamp(parent: Node, pos: Vector3) -> void:
 		arm.rotation.y = -a + PI * 0.5
 		sphere(parent, 0.2, pos + Vector3(0, 6.45, 0) + dir * 0.8, glow)
 	sphere(parent, 0.22, pos + Vector3(0, 7.0, 0), glow)
+	if OS.has_feature("web"):
+		return   # в браузере каждая лампа = лишний проход отрисовки; днём их почти не видно
 	var light := OmniLight3D.new()
 	light.position = pos + Vector3(0, 6.3, 0)
 	light.light_color = Color("ffe8b0")

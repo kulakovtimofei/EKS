@@ -23,6 +23,8 @@ var _car_timer := 0.0
 
 func _ready() -> void:
 	_rng.seed = 42
+	if OS.has_feature("web"):
+		pedestrians = mini(pedestrians, 50)   # в браузере каждый прохожий — десяток вызовов отрисовки
 	var n := walk_graph.points.size()
 	for i in pedestrians:
 		var lane := _rng.randf_range(0.3, 1.6) * (1.0 if _rng.randf() < 0.5 else -1.0)
